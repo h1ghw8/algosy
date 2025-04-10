@@ -50,17 +50,14 @@ def merge(left, right):
 
 #3
 
-def database(data):
-    N = int(data[0])
-    k = int(data[1])
-    priority = list(map(int, data[2:2+k]))
+def database(data, priority):
     records = []
-    index = 2 + k
+    index = 0
     for _ in range(N):
-        name = data[index]
-        values = list(map(int, data[index+1:index+1+k]))
+        name = data[index][0]
+        values = list(map(int, data[index][1:]))
         records.append((name, values))
-        index += 1 + k
+        index += 1
     records.sort(key=lambda rec: tuple(rec[1][p-1] for p in priority))
     for rec in records:
         print(rec[0])
